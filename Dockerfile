@@ -1,7 +1,7 @@
-FROM python
-MAINTAINER Balakrishna "balakrishna@gmail.com"
-COPY . /app
-WORKDIR /app
-EXPOSE 5000
-RUN pip install -r requirements.txt
-ENTRYPOINT ["python", "app.py"]
+FROM ubuntu
+LABEL mail="balakrishna@gmail.com"
+LABEL name="Balakrishna.G"
+RUN apt-get update && apt-get install -y nginx
+COPY index.html /var/www/html/index.html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
